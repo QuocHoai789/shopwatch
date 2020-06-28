@@ -30,7 +30,7 @@
 	
 	
 	<td>
-		<a href="{{route('reply-contact')}}">Phản hồi</a>
+		<a href="{{route('reply-contact',['id'=>$cont->id])}}">Phản hồi</a>
 		<a href="{{route('delete-contact',['id'=>$cont->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xóa ?');"><i class="fa fa-trash-o" style="font-size:24px"></i></a>
 	</td>
 	</tr>

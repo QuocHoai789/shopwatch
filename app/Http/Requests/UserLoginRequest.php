@@ -30,7 +30,7 @@ class UserLoginRequest extends FormRequest
             'birthday' => 'required|date',
             'phonenumber' => 'required',
             'address' => 'required',
-            'captcha' => 'required|captcha',
+            
         ];
     }
     public function messages()
@@ -40,6 +40,7 @@ class UserLoginRequest extends FormRequest
             'email' => 'không đúng định dạng Email', 
             'confirmed' => 'Xác nhận lại mật khẩu sai',
             'email.unique'=>'Tài khoản đã tồn tại'
+            'captcha'=>'Sai mã xác thực',
         ];
 
     }

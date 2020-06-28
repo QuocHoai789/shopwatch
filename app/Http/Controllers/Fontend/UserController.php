@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function post_user_login(Request $request)
     {
-    	$request->validate(['email'=>'required','password'=>'required|min:6','captcha' => 'required|captcha'],['required'=>'Không được để trống trường','min'=>'Mật khẩu ít nhất 6 ký tự']);
+    	$request->validate(['email'=>'required','password'=>'required|min:6'],['required'=>'Không được để trống trường','min'=>'Mật khẩu ít nhất 6 ký tự','captcha'=>'sai mã xác thực']);
 
     	$email=$request->email;
     	$pass=$request->password;

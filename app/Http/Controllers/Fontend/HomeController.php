@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
-    //
-	//  public function index(){
-    	
-    	
-    // 	$highlight_product=Products::where('status',1)->where('ordernum',1)->limit(9)->get();
-    	
-    // 	$new_product=Products::where('status',1)->where('ordernum',2)->limit(9)->get();
+    
 
 	public function index()
 	{

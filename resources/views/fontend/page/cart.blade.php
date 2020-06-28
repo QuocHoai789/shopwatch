@@ -146,7 +146,7 @@ Giỏ hàng
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
-                                <textarea name="note" class="note-cart" placeholder="Ghi chú"></textarea>
+                                <textarea name="note" class="note-cart" placeholder="Ghi chú" required="required"></textarea>
                             </div>
                             <input type="hidden" name="users_id"
                                 value="<?php if(Auth::check()) echo Auth::user()->id?>">

@@ -3,6 +3,8 @@
 
 <head>
     <title>Đăng nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" type="text/javascript"></script>
     <style type="text/css">
         * {
@@ -113,6 +115,7 @@
             font-size: 15px;
         }
 
+
     </style>
 </head>
 
@@ -144,22 +147,25 @@
                                 <input type="password" name="password">
                                 <span data-placehoder="Mật khẩu"></span>
                             </div>
-                            
-                            <div class="row">
-
-                              <div class="col-md-4"></div>
-                              <div class="form-group col-md-4">
-                               <div class="captcha">
-                                 <span>{!! captcha_img() !!}</span>
-                                 <button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button>
-
-                             </div>
-                         </div>
-                     </div>
-                     <div >
-                         <input style="height: 40px; width: 260px" type="text" name="captcha"  placeholder="Nhập mã xác thực"><br/><br/>
-                     </div>
+                    
                             <input type="submit" class="logbtn" name="login" value="Đăng nhập">
+                            <div style=" margin-top: 15px; height: 100px">
+                               <span style="margin-left: 73px;margin-top: 10px; font-size: 18px"> Hoặc đăng nhập với</span>
+                               <div style="background-color: pink;margin-top: 10px">
+                                 <div style="width:50px;height:50px;ma ;margin-left: 55px ; float: left ">
+                                   <a href="">  <i class="fa fa-facebook-square" style="font-size:48px;color:blue"></i></a>
+                                 </div>
+                                 <div style="width:50px;height:50px;margin-left: 20px;float: left; ">
+                                   <a href="">  <i class="fa fa-google-plus-circle" style="font-size:48px;color:red"></i></a>
+                                 </div>
+
+                                 <div style="width:50px;height:50px;margin-left: 20px;float: left; ">
+                                     <a href=""><i class="fa fa-twitter" style="font-size:48px;color:blue"></i></a>
+                                 </div>
+                                
+                             </div>
+                            </div>
+                           
                             <div class="bottom-text">
                                 Chưa có tài khoản? <a href="{{ route('user-sign-up') }}">Đăng ký</a>
                             </div>

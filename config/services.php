@@ -29,5 +29,11 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'facebook' => [
+        'client_id' => 'ID ứng dụng',
+        'client_secret' => 'Khóa bí mật của ứng dụng',
+        'redirect' => 'https://yourwebsite.com/auth/facebook/callback',
+],
 
 ];

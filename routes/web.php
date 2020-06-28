@@ -121,7 +121,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
     Route::get('all-contact','ContactController@all_contact')->name('all-contact');
     Route::get('/delete-con-{id}','ContactController@delete_contact')->name('delete-contact');
-    Route::get('reply-contact','ContactController@reply_contact')->name('reply-contact');
+    Route::get('reply-contact/{id}','ContactController@reply_contact')->name('reply-contact');
+    Route::post('postReply/{id}','ContactController@post_reply_contact')->name('postReply');
     //Seach
     Route::group(['prefix' => 'seach'], function () {
         Route::get('bill','SeachController@getBill')->name('seachBill');
@@ -204,3 +205,4 @@ Route::group(['namespace' => 'Ajax'], function () {
 });
 
 // Route::get('/brand/{id}', 'Fontend\BrandController@product_of_brand')->name('brand');
+Route::get('/sendmail','Sendmail\MailController@sendmail');
