@@ -41,18 +41,19 @@ class BillFontEndController extends Controller
             }
             Carts::where('users_id',Auth::user()->id)->delete();
         } else {
-            foreach (session('cart') as $value) {
+            $cart = session()->get('cart');
+            foreach ($cart as $key => $value) {
                 //create detail bill
-                $product = Products::find($value['products_id']);
+                $product = Products::find($key);
                 $detail = new BillDetails;
                 $detail->bills_id = $table->id;
-                $detail->products_id = $value['products_id'];
-                $detail->quantily = $value['quantily'];
-                $detail->price = $product->sellprice;
+                $detail->products_id = $key;
+                $detail->quantily = $cart[$key]['quantily'];
+                $detail->price = $cart[$key]['price'];
                 $detail->save();
 
                 //update quantily product
-                $quantily = ($product->quantily) - $value['quantily'];
+                $quantily = ($product->quantily) - $cart[$key]['quantily'];
                 $product->quantily = $quantily;
                 $product->save();
             }

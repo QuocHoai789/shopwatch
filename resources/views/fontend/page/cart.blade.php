@@ -21,6 +21,7 @@ Giỏ hàng
 
 </style>
 <div class="cart">
+
     <div class="wrap">
         <!-- cart empty -->
         @if(!isset($carts) && !isset($carts_user))
@@ -34,7 +35,7 @@ Giỏ hàng
         <a href="{{ route('index') }}">Tiếp tục mua sắm</a>
         <!-- cart not empty -->
         @if(isset($carts)||(isset($carts_user)&&count($carts_user)!=0))
-            <div>
+            <div id="cart-infor">
                 <div class="cart-table">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -54,7 +55,7 @@ Giỏ hàng
                                         <td><img src="{{ asset($cart->products->avatar->image) }}" alt=""
                                                 class="cart_img"></td>
                                         <td>{{ $cart->products->name }}</td>
-                                        <td>
+                                        <td class="price">
                                             {{ number_format($cart->products->sellprice) }}
                                             <br>
                                             <span
@@ -62,14 +63,16 @@ Giỏ hàng
 
                                         </td>
                                         <td>
-                                            <form action="{{ route('updateCart') }}" method="get">
+                                            <form action="" method="get">
                                                 <div class="form-group" id="table-cart"
-                                                    id="productid{{ $cart->products_id }}">
-                                                    <input type="hidden" name="id" value="{{ $cart->id }}">
-                                                    <input type="number" class="form-control" min=1
-                                                        value="{{ $cart->quantily }}" name="quantily"
-                                                        id-product="{{ $cart->products_id }}">
-                                                    <button type="submit" class="btn btn-primary" id=""
+                                                    id="">
+                                                    <input type="hidden" name="products_id"
+                                                        value="{{$cart->products->id}}">
+                                                    <input type="number" class="form-control quantily" min=1
+                                                        value="{{$cart['quantily']}}"
+                                                        name="quantily"
+                                                        id="num{{$cart->products->id}}">
+                                                    <button type="submit" class="btn btn-primary update"  value="{{$cart->products->id}}"
                                                         style="z-index: 1">Cập
                                                         nhật</button>
                                                 </div>
@@ -84,28 +87,28 @@ Giỏ hàng
                                 @endforeach
                             @else
                                 {{-- not sign in user --}}
-                                @foreach($carts as $key=>$cart)
+                                @foreach($carts as $key => $cart)
                                     <tr>
-                                        <td><img src="{{ asset($cart['product']->avatar->image) }}" alt="" class="cart_img"></td>
-                                        <td>{{ $cart['product']->name }}</td>
+                                        <td><img src="" alt="" class="cart_img"></td>
+                                        <td>{{$cart['name']}}</td>
                                         <td>
-                                            {{ number_format($cart['product']->sellprice) }}
+                                            
                                             <br>
                                             <span
-                                                class="price-cart">{{ number_format($cart['product']->price) }}</span>
+                                                class="price">{{number_format($cart['price'])}} đ</span>
 
                                         </td>
                                         <td>
-                                            <form action="{{ route('updateCart') }}" method="get">
+                                            <form action="" method="get">
                                                 <div class="form-group" id="table-cart"
-                                                    id="productid{{ $cart['products_id'] }}">
+                                                    id="">
                                                     <input type="hidden" name="products_id"
-                                                        value="{{ $cart['products_id'] }}">
-                                                    <input type="number" class="form-control" min=1
-                                                        value="{{ $cart['quantily'] }}"
+                                                        value="{{$key}}">
+                                                    <input type="number" class="form-control quantily" min=1
+                                                        value="{{$cart['quantily']}}"
                                                         name="quantily"
-                                                        id-product="{{ $cart['products_id'] }}">
-                                                    <button type="submit" class="btn btn-primary" id=""
+                                                        id="num{{$key}}">
+                                                    <button type="submit" class="btn btn-primary update"  value="{{$key}}"
                                                         style="z-index: 1">Cập
                                                         nhật</button>
                                                 </div>
@@ -113,8 +116,8 @@ Giỏ hàng
                                         </td>
                                         <td>
                                             <a
-                                                href="{{ route('deleteCart',$cart['product']->id) }}"><button
-                                                    type="button" class="btn btn-danger delete-cart" id=""
+                                                href=""><button
+                                                    type="button"  class="btn btn-danger delete-cart" 
                                                     style="z-index: 1">Xóa</button></a>
                                         </td>
                                     </tr>
@@ -167,7 +170,7 @@ Giỏ hàng
                                 <tr class="text-total">
                                     <td>Tổng cộng</td>
                                     <td>
-                                        {{ number_format($total + $ship) }} <span> đ</span>
+                                        <span id="total">{{ number_format($total + $ship) }}</span> <span> đ</span>
                                         <input type="hidden" name="total" value="{{ $total + $ship }}">
                                     </td>
                                 </tr>
@@ -181,5 +184,30 @@ Giỏ hàng
         @endif
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('.update').on('click',function(event){
+
+            event.preventDefault();
+
+            var products_id = $(this).attr('value');
+            var link = 'http://localhost:8080/shopwatch/ajax/update-cart/'+products_id;
+
+            var id_number = '#num'+products_id;
+            var quantily = $(id_number).attr('value');
+            $.get(
+                 link,
+                 { number:quantily}   
+                , 
+                function(data){
+                    //alert('Cập nhật giỏ hàng thành công');
+                    $('.bils').html(data);
+                }
+
+                );
+            
+        })
+    })
+</script>
 @include('notify.note')
 @endsection

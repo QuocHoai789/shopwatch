@@ -11,8 +11,8 @@ class DashboardController extends Controller
 {
     function index()
 	{
-		$data['users']=count(User::where('level',0)->get());
-        $data['order']=count(Bills::all());
+		$data['users'] = count(User::where('level',0)->get());
+        $data['order'] = count(Bills::all());
         // $date=date('m');
         // $products=BillDetails::where('created_at','>','2020-5-1')->get()->toarray();
         // dd($products);

@@ -13,12 +13,12 @@
                             <div class="position-center">
                                 <form role="form" action="{{route('post_add_banner')}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                        		@if(count($errors->all())>0)
+                        		
                                     @include('error.Note')
-                                @endif()
+                                
                                 <div class="form-group">
                                     <label for="product">Tên Banner</label>
-                                    <input type="text" name="banner_name" class="form-control" id="" placeholder="Nhập tên banner " required>
+                                    <input type="text" name="banner_name" class="form-control" id="" placeholder="Nhập tên banner " >
                                 </div>
                                 <div class="form-group">
                                     <label for="product">Link Banner</label>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div >
                                     <label for="mota">Hình ảnh Banner</label>
-                                    <input  type="file" name="banner_image" required >
+                                    <input  type="file" name="banner_image"  >
                                     
                                 </div>
                                 <div class="form-group">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="mota">Odernum</label>
-                                    <input type="number" min=0 name="banner_odernum" class="form-control" id="mota" placeholder="" required>
+                                    <input type="number" min=0 name="banner_odernum" class="form-control" id="mota" placeholder="" >
                                     
                                 </div>
                                 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Mail from ShopWatch</h1>
-{!!$details!!}
+{!! $details !!}
 
 </body>
 </html>

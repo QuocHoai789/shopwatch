@@ -13,9 +13,9 @@
                             <div class="position-center">
                                 <form role="form" action="{{route('post-add-user')}}" method="post" >
                                     @csrf
-                                    @if(count($errors)>0)
+                                    
                         				@include('error.Note')
-                        			@endif
+                        			
                                 <div class="form-group">
                                     <label for="mail">Email </label>
                                     <input type="text" name="email" class="form-control" id="" placeholder="Nhập email " >

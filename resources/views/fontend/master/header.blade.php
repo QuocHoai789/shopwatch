@@ -122,7 +122,8 @@
                         <ul class="sub-icon1 list">
                             @if(Auth::check())
                             {{--  sign in user  --}}
-                                @if(count($carts)!=0)
+
+                                @if(count($carts)!= 0)
                                     <li>
                                         <table>
                                             <tr>
@@ -154,7 +155,7 @@
                                 @endif
                             @else
                             {{--  not sign in user  --}}
-                                @if(session()->has('cart'))
+                            @if(isset($carts))
                                     <li>
                                         <table>
                                             <tr>
@@ -164,16 +165,16 @@
                                             </tr>
                                         </table>
                                     </li>
-                                    @foreach($carts as $cart)
+                                    @foreach($carts as $key => $cart)
                                         <li>
                                             <table>
                                                 <tr>
                                                     <td class="name">
-                                                        {{ $cart['product']->name }}</td>
+                                                        {{ $cart['name'] }}</td>
                                                     <td class="num"><span>x
                                                         </span>{{ $cart['quantily'] }}</td>
                                                     <td class="money">
-                                                        {{ number_format($cart['product']->sellprice*$cart['quantily']) }}
+                                                        {{ number_format($cart['price']*$cart['quantily']) }}
                                                     </td>
                                                 </tr>
                                             </table>
@@ -184,6 +185,7 @@
                                         <h3>Không có sản phẩm</h3>
                                     </li>
                                 @endif
+                                
                             @endif
                             <!-- khi có sản phẩm -->
 
@@ -192,17 +194,16 @@
                 </ul>
                 {{-- show number product in cart --}}
                 @if(Auth::check())
-                    @if(isset($carts)&&count($carts)!=0)
+                    @if(!empty($carts))
                         <div class="icon-cart-on">
                             <span>{{ count($carts) }}</span>
                         </div>
                     @endif
-                @else
-                    @if(session()->has('cart'))
+                @elseif(isset($carts))
+
                         <div class="icon-cart-on">
                             <span>{{ count($carts) }}</span>
                         </div>
-                    @endif
                 @endif
             </div>
         </div>

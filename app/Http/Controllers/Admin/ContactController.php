@@ -12,13 +12,13 @@ class ContactController extends Controller
     public function all_contact()
 
     {
-    	$contact= Contact::paginate(6);
+    	$contact = Contact::paginate(6);
     	return view('backend.page.contact.all-contact')->with('contact',$contact);
     }
 
     public function delete_contact($id)
     {
-    	$con=Contact::find($id)->delete();
+    	$con = Contact::find($id)->delete();
     	return redirect()->back()->with('notification','Đã xóa thành công');
     }
 
@@ -32,7 +32,7 @@ class ContactController extends Controller
     public function post_reply_contact($id, Request $request)
     {   
         $contact = Contact::find($id);
-        $mail= $request->mail;
+        $mail = $request->mail;
 
         $reply_contact = new ReplyContact;
         

@@ -9,7 +9,7 @@ class Comment extends Model
     protected $table="comment";
     public function users()
     {
-        return $this->hasOne('App\Models\Users', 'id', 'users_id');
+        return $this->belongsTo('App\Models\Users', 'users_id', 'id');
     }
     public function replyComment()
     {

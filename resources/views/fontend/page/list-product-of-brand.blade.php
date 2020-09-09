@@ -39,9 +39,10 @@
                     <div class="mens-toolbar">
                         <div class="sort">
                             <div class="sort-by">
-                                <form method="get" action="">
+                                <form id="form1" method="get" action="">
+
                                     <label>Sắp xếp</label>
-                                    <select name="sort" onchange="javascript:this.form.submit()">
+                                    <select  id="filter" name="sort" onchange="javascript:this.form.submit()">
                                         <option value="id" @if(Request::get('sort')=='id' ||Request::get('sort')==''
                                             ){{ 'selected' }} @endif>
                                             Mặc định </option>
@@ -54,7 +55,9 @@
                                         <option value="price_desc" @if(Request::get('sort')=='price_desc'
                                             ){{ 'selected' }} @endif>
                                             Giá giảm dần </option>
-                                    </select></form>
+                                    </select>
+
+                                </form>
                             </div>
                         </div>
                         <div class="pager">
@@ -92,11 +95,11 @@
                         <div class="row row1 scroll-pane">
                             <div class="col col-4">
                                 <label class="checkbox"><a
-                                        class="{{ Request::get('gender')==1?'active':'' }}"
+                                        class="{{ Request::get('gender') == 1 ? 'active' : '' }}"
                                         href="{{ request()->fullUrlWithQuery(['gender'=>1]) }}"><i></i>Nam</a></label>
                                 <div class="col col-4">
                                     <label class="checkbox"><i></i><a
-                                            class="{{ Request::get('gender')==2 ?'active':'' }}"
+                                            class="{{ Request::get('gender') == 2 ? 'active' : '' }}"
                                             href="{{ request()->fullUrlWithQuery(['gender'=>2]) }}">Nữ</a></label>
 
                                 </div>
@@ -135,4 +138,11 @@
     </div>
 </div>
 <script src="js/jquery.easydropdown.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        
+    });
+</script>
+        
 @endsection

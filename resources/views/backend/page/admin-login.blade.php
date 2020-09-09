@@ -28,20 +28,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<form action="{{route('postadminlogin')}}" method="post">
 			@csrf
 			@if(isset($tb))
-			<div><strong style="color: red;font-weight: italic;text-align: center">{{$tb}}</strong></div>
+			<div class="alert alert-danger">{{$tb}}</div>
 			@endif
-			<input type="email" class="ggg" name="Email" placeholder="E-MAIL" >
-			@if($errors->has('Email'))
-			
-				<strong style="color: red;font-weight: italic">{{$errors->first('Email')}}</strong>
-			
-			@endif
-			<input type="password" class="ggg" name="Password" placeholder="Mật khẩu" >
-			@if($errors->has('Password'))
-			<div>
-				<strong style="color: red;font-weight: italic">{{$errors->first('Password')}}</strong>
-			</div>
-			@endif
+			<input type="email" class="ggg @error('Email') is-invalid @enderror" name="Email" placeholder="E-MAIL" >
+			@error('Email')
+			<div class="alert alert-danger">{{ $message }}</div>
+			@enderror
+			<input type="password" class="ggg @error('Password') is-invalid @enderror" name="Password" placeholder="Mật khẩu" >
+			@error('Password')
+			<div class="alert alert-danger">{{ $message }}</div>
+			@enderror
 			<!-- <span><input type="checkbox" />Nhớ mật khẩu</span>
 			<h6><a href="#">Quên mật khẩu?</a></h6> -->
 				<div class="clearfix"></div>

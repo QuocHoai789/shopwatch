@@ -12,9 +12,9 @@ class ProductDetailController extends Controller
 {
     public function getProductDetail(Request $request,$id)
     {
-        $data['products']=Products::find($request->id);
-        $data['listProducts']=Products::all();
-        $data['comments']=Comment::where('products_id',$request->id)->get();
+        $data['products'] = Products::find($request->id);
+        $data['listProducts'] = Products::all();
+        $data['comments'] = Comment::where('products_id',$request->id)->get();
         return view('fontend.page.single',$data);
     }
 }

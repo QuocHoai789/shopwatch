@@ -38,7 +38,28 @@ class AjaxFontEndController extends Controller
         }
         //return 'false';
     }
+    function update_cart($id, Request $req){
+        $total = 0;
+        $cart = session()->get('cart');
+        foreach ($cart as $key => $car) {
 
+         if($key == $id){
+            $cart[$key]['quantily'] = $req->number;
+            break; 
+         }  
+
+        }
+
+        foreach ($cart as $value) {
+            $total += $value['price']*$value['quantily'];
+        }
+        session()->put('cart',$cart);
+
+
+         
+        
+        return view('fontend.ajax.update-cart')->with('total',$total)->with('ship',0);
+    }
     //check email
     public function checkEmail(Request $request)
     {

@@ -150,7 +150,8 @@ Route::group(['namespace' => 'FontEnd'], function () {
     Route::post('/post-infor/{id}/', 'UserController@post_user_infor')->name('post-infor');
     //logout
     Route::get('/user-logout', 'UserController@user_logout')->name('user-logout');
-
+    Route::get('/forgot-password','UserController@forgot_password')->name('forgot-password');
+    Route::post('/post-forgot-password','UserController@post_forgot_password')->name('post-forgot-password');
     //danh sách sản phẩm theo thương hiệu
     Route::get('/brand/{id}', 'BrandController@product_of_brand')->name('brand');
     
@@ -195,6 +196,7 @@ Route::group(['namespace' => 'FontEnd'], function () {
 Route::group(['namespace' => 'Ajax'], function () {
     Route::group(['prefix' => 'ajax'], function () {
         Route::get('/', 'AjaxFontEndController@index');
+        Route::get('/update-cart/{id}','AjaxFontEndController@update_cart');
         Route::group(['prefix' => 'comment'], function () {
             Route::get('add', 'AjaxFontEndController@addComment')->name('addComment');
             Route::get('addreply', 'AjaxFontEndController@addReplyComment')->name('addReplyComment');

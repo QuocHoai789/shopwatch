@@ -9,6 +9,6 @@ class Bills extends Model
     protected $table='bills';
     public function users()
     {
-        return $this->hasOne('App\Models\Users', 'id','users_id');
+        return $this->belongsTo('App\Models\Users', 'users_id','id');
     }
 }

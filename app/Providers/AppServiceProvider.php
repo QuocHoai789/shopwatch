@@ -36,15 +36,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('fontend/master/header', function ($view) {
             $brand = Brands::where('status', 1)->get();
             $view->with('brand', $brand);
-            if (session()->has('cart')) {
-                $carts = session('cart');
-                foreach ($carts as $key => $value) {
-                    $product = Products::find($value['products_id']);
-                    $carts[$key]['product'] = $product;
-                }
-                $data['carts'] = $carts;
-                $view->with('carts', $carts);
-            }
+            
+             if (session()->has('cart')) {
+                 $carts = session('cart');
+                 $view->with('carts', $carts);
+             }
             if(Auth::check()){
                 $id=Auth::user()->id;
                 //bill

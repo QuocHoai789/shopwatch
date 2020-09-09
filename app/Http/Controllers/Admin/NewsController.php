@@ -12,36 +12,36 @@ class NewsController extends Controller
 
     }
     public function post_add_new(Request $request){
-    	$request->validate(['title'=>'required','content'=>'required','image'=>'required']);
-    	$title=$request->title;
-    	$content=$request->content;
-    	$status=$request->status;
-    	$image=$request->image;
-    	$file_name=$image->getClientOriginalName();
+    	$request->validate(['title' => 'required','content' => 'required','image' => 'required']);
+    	$title = $request->title;
+    	$content = $request->content;
+    	$status = $request->status;
+    	$image = $request->image;
+    	$file_name = $image->getClientOriginalName();
     	$image->move('public/upload/images/', $file_name);
-    	$new=new News;
-    	$new->title=$title;
-    	$new->content=$content;
-    	$new->status=$status;
-    	$new->image=$file_name;
+    	$new = new News;
+    	$new->title = $title;
+    	$new->content = $content;
+    	$new->status = $status;
+    	$new->image = $file_name;
     	$new->save();
     	return redirect('admin/new/all-new')->with('notification','Đã thêm tin mới');
 
     }
     public function all_new(){
-    	$news=News::orderBy('created_at','desc')->paginate(5);
+    	$news = News::orderBy('created_at','desc')->paginate(5);
     	return view('backend.page.new.list-new')->with('news',$news);
     }
     public function active($id){
-    	$new=News::find($id);
-    	$new->status=1;
+    	$new = News::find($id);
+    	$new->status = 1;
     	$new->save();
     	return redirect()->back();
 
     }
     public function unactive($id){
     	$new=News::find($id);
-    	$new->status=0;
+    	$new->status = 0;
     	$new->save();
     	return redirect()->back();
 
@@ -51,13 +51,13 @@ class NewsController extends Controller
     	return view('backend.page.new.edit-new')->with('new',$new);
     }
     public function post_edit(Request $request,$id){
-    	$title=$request->title;
-    	$content=$request->content;
-    	$status=$request->status;
-    	$new=News::find($id);
-    	$new->title=$title;
-    	$new->content=$content;
-    	$new->status=$status;
+    	$title = $request->title;
+    	$content = $request->content;
+    	$status = $request->status;
+    	$new = News::find($id);
+    	$new->title = $title;
+    	$new->content = $content;
+    	$new->status = $status;
     	$new->save();
     	return redirect('admin/new/all-new')->with('notification','Đã cập nhật thành công');
     }

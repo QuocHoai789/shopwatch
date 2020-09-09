@@ -165,7 +165,9 @@
                                 
                              </div>
                             </div>
-                           
+                           <div >
+                               <a href="{{route('forgot-password')}}"><span style=" float: right;font-size: 16px; font-weight: italic">Bạn quên mật khẩu ?</span></a>
+                           </div>
                             <div class="bottom-text">
                                 Chưa có tài khoản? <a href="{{ route('user-sign-up') }}">Đăng ký</a>
                             </div>
