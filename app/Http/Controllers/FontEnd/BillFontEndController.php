@@ -24,8 +24,8 @@ class BillFontEndController extends Controller
         $table->users_id = $request->users_id;
         $table->save();
         if (Auth::check()) {
-            $carts=Carts::where('users_id',Auth::user()->id)->get();
-            foreach($carts as $cart){
+            $carts = Carts::where('users_id', Auth::user()->id)->get();
+            foreach ($carts as $cart) {
                 $detail = new BillDetails;
                 $detail->bills_id = $table->id;
                 $detail->products_id = $cart->products_id;
@@ -39,7 +39,7 @@ class BillFontEndController extends Controller
                 $product->quantily = $quantily;
                 $product->save();
             }
-            Carts::where('users_id',Auth::user()->id)->delete();
+            Carts::where('users_id', Auth::user()->id)->delete();
         } else {
             $cart = session()->get('cart');
             foreach ($cart as $key => $value) {

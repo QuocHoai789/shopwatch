@@ -16,12 +16,12 @@ class BrandController extends Controller
 	{
 
 		//get brand
-		$brand = Brands::where('id',$id)->get();
+		$brand = Brands::where('id', $id)->get();
 
 		$product = Brands::join('products', 'brands.id', '=', 'products.brands_id')->join('image_product', 'products.id', '=', 'image_product.products_id')->join('info_product', 'products.id', '=', 'info_product.products_id')->where('products.brands_id', $id)->where('image_product.level', 1);
 		$tempt = 0;
 		//phần lọc danh sách sản phẩm
-		
+
 		//1. sắp xếp sản phẩm theo tên ,giá
 		if ($request->has('sort')) {
 			$tempt = 1;

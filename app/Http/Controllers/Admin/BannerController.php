@@ -42,20 +42,27 @@ class BannerController extends Controller
         $banners = Banners::orderBy('ordernum','asc')->get();
         return view('backend.page.banner.all-banner', ['banners' => $banners]);
     }
-    function active_banner($id)
+    function active_banner($id, Request $req)
     {
         $banner = Banners::find($id);
-        $banner->status = 1;
-        $banner->save();
-        return redirect('admin/banner/all-banner');
+        if($req->status == 1)
+        {
+            $banner->status = 0;
+            $banner->save();
+            echo 'Ẩn';
+        }
+
+        else if($req->status == 0)
+        {
+            $banner->status = 1;
+            $banner->save();
+            echo 'Hiện';
+        }
+        
+        
+        
     }
-    function unactive_banner($id)
-    {
-        $banner = Banners::find($id);
-        $banner->status = 0;
-        $banner->save();
-        return redirect('admin/banner/all-banner');
-    }
+    
     function edit_banner($id)
     {
         $banner = Banners::where('id', $id)->get();

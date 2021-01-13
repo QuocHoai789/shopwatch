@@ -71,10 +71,11 @@
                 <div class="clients">
                     <h3 class="m_3">Những sản phẩm khác nổi bật</h3>
                     <ul id="flexiselDemo3">
+                        @isset($listProducts)
                         @foreach($listProducts as $list)
                             {{-- {{ $list->avatar->image }} --}}
                             <li>
-                                <img src="{{ asset($list->avatar->image) }}" style="height:140px" />
+                                <img src="{{ asset($list->avatar()->image) }}" style="height:140px" />
                                 <a href="{{ route('getProductSingle',$list->id) }}">
                                     {{ $list->name }}
                                 </a>
@@ -82,6 +83,7 @@
                                 <p class="price-deco">{{ number_format($list->price) }}</p>
                             </li>
                         @endforeach
+                        @endisset
                     </ul>
                     <script type="text/javascript">
                         $(window).load(function () {
@@ -220,6 +222,7 @@
                     id-user="<?php if(Auth::check()){echo Auth::user()->id;}?>">
                 <div class="comment-main">
                     <!-- comment -->
+                    @isset($comments)
                     @foreach($comments as $comment)
                         <div class="media">
                             <div class="media-left">
@@ -263,6 +266,7 @@
                             </div>
                         </div>
                     @endforeach
+                    @endisset
                 </div>
             </div>
             <div class="clear"></div>

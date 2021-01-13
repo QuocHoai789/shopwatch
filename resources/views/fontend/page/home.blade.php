@@ -7,6 +7,7 @@
 <!-- start slider -->
 <div id="fwslider">
     <div class="slider_container">
+        @isset($banner)
         @foreach($banner as $ban)
             <div class="slide">
                 <!-- Slide image -->
@@ -15,6 +16,7 @@
                 </a>
             </div>
         @endforeach
+        @endisset
         <!-- /Duplicate to create more slides -->
 
         <!--/slide -->
@@ -26,31 +28,33 @@
 <!-- end slider -->
 <!-- main-content -->
 <div class="main1">
+    
+    @isset($highlight_product)
     @if(count($highlight_product)!=0)
         <div class="main2">
             <div class="main21">
                 <h2>Sản phẩm nổi bật</h2>
             </div>
             <div class="main22">
-                @foreach($highlight_product as $hi)
+                @foreach($highlight_product as $highlight)
                     <div class="main221">
                         <div class="img1" style="position: relative;">
-                            <?php $img =  $hi->imageProduct()->where('level',1)->first(); ?>
-                            <img width="260" height="280" src="../../{{$img->image}}">
+                            
+                            <img width="260" height="280" src="../../{{$highlight->avatar()->image}}">
                             <div class="mua nav-link"><a
-                                    class="btn btn-primary" href="{{ route('getProductSingle',['id'=>$hi->id]) }}">Xem
+                                    class="btn btn-primary" href="{{ route('getProductSingle',['id'=>$highlight->id]) }}">Xem
                                     chi tiết</a></div>
                         </div>
                         <div class="namesp">
-                            <p>{{ $hi->name }}</p>
+                            <p>{{ $highlight->name }}</p>
                         </div>
                         <div class="pri">
                             <div class=" boc-pri">
                                 <div class="sell">
-                                    <span>{{ number_format($hi->price,0,',',',')."đ" }}</span>
+                                    <span>{{ number_format($highlight->price,0,',',',')."đ" }}</span>
                                 </div>
                                 <div class="normalp"><span
-                                        style="color: red">{{ number_format($hi->sellprice,0,',',',')."đ" }}</span>
+                                        style="color: red">{{ number_format($highlight->sellprice,0,',',',')."đ" }}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,33 +63,35 @@
             </div>
         </div>
     @endif
+    @endisset
     <div class="clear"></div>
+    @isset($new_product)
     @if(count($new_product)!=0)
         <div class="main2">
             <div class="main21">
                 <h2>Sản phẩm mới</h2>
             </div>
             <div class="main22">
-                @foreach($new_product as $ne)
+                @foreach($new_product as $new_pro)
                     <div class="main221">
                         <div class="img1" style="position: relative;">
-                            <?php $ne_img =  $ne->imageProduct()->where('level',1)->first(); ?>
-                            <img width="260" height="280" src="../../{{ $ne_img->image }}">
+                           
+                            <img width="260" height="280" src="../../{{ $new_pro->avatar()->image }}">
                             <div class="mua"><a
                                 class="btn btn-primary"
-                                    href="{{ route('getProductSingle',['id'=>$ne->id]) }}">Xem
+                                    href="{{ route('getProductSingle',['id'=>$new_pro->id]) }}">Xem
                                     chi tiết</a></div>
                         </div>
                         <div class="namesp">
-                            <p>{{ $ne->name }}</p>
+                            <p>{{ $new_pro->name }}</p>
                         </div>
                         <div class="pri">
                             <div class=" boc-pri">
                                 <div class="sell">
-                                    <span>{{ number_format($ne->price,0,',',',')."đ" }}</span>
+                                    <span>{{ number_format($new_pro->price,0,',',',')."đ" }}</span>
                                 </div>
                                 <div class="normalp"><span
-                                        style="color: red">{{ number_format($ne->sellprice,0,',',',')."đ" }}</span>
+                                        style="color: red">{{ number_format($new_pro->sellprice,0,',',',')."đ" }}</span>
                                 </div>
                             </div>
                         </div>
@@ -94,11 +100,13 @@
             </div>
         </div>
     @endif
+    @endisset
     <div class="clear"></div>
     <div class="main3">
         <div class="main31">
             <div class="main311"><span>Tin Tức</span></div>
             <div class="main312">
+                @isset($new)
                 @foreach($new as $n)
                     <div class="main3121">
                         <div class="main3121img"><img width="137" height="137" src="../upload/images/{{ $n->image }}">
@@ -108,6 +116,7 @@
                         </div>
                     </div>
                 @endforeach
+                @endisset
             </div>
         </div>
         <div class="main32">

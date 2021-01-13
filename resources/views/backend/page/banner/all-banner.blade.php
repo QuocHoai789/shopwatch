@@ -33,12 +33,13 @@
                         <td>{{ $ban->link }}</td>
                         <td><img src="../upload/images/{{ $ban->image }}" width="100" height="100"></td>
                         <td>
+
                             @if($ban->status==0)
                                 <a
-                                    href="{{ route('active_banner',['id'=>$ban->id]) }}">Ẩn</a>
+                                    href="" data-sta ="0"  data-id ="{{$ban->id}}" class ="status">Ẩn</a>
                             @elseif($ban->status==1)
                                 <a
-                                    href="{{ route('unactive_banner',['id'=>$ban->id]) }}">Hiện</a>
+                                    href="" data-sta ="1" data-id ="{{$ban->id}}" class ="status">Hiện</a>
                             @endif
                         </td>
                         <td >{{ $ban->ordernum }}</td>
@@ -56,6 +57,29 @@
         </table>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('.status').on('click', function(e){
+            e.preventDefault();
+            var a = $(this);
+            var sta = a.data('sta');
+            var id = a.data('id');
+            $.get(
+                'http://localhost:8080/shopwatch/admin/banner/status/'+id,
+                {
+                    status : sta
+                },
+                function(data){
+                    a.html(data);
+                    alert('Chỉnh sửa trạng thái thành công');
+                    
+                }
+
+                );
+
+        });
+    })
+</script>
 @if(session()->has('notification'))
 @include('notify.note')
 @endif

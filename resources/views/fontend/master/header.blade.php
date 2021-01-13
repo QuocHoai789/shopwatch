@@ -199,7 +199,7 @@
                             <span>{{ count($carts) }}</span>
                         </div>
                     @endif
-                @elseif(isset($carts))
+                @elseif(!empty($carts))
 
                         <div class="icon-cart-on">
                             <span>{{ count($carts) }}</span>

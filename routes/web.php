@@ -46,7 +46,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('/add-banner', 'BannerController@post_add_banner')->name('post_add_banner');
         Route::get('/all-banner', 'BannerController@all_banner')->name('all-banner');
         Route::get('/status/{id}', 'BannerController@active_banner')->name('active_banner');
-        Route::get('/status1/{id}', 'BannerController@unactive_banner')->name('unactive_banner');
         Route::get('/edit-banner/{id}', 'BannerController@edit_banner')->name('edit-banner');
         Route::post('/edit-banner/{id}', 'BannerController@post_edit_banner')->name('edit-banner');
         Route::get('/delete-banner/{id}', 'BannerController@delete_banner')->name('delete-banner');
@@ -197,6 +196,7 @@ Route::group(['namespace' => 'Ajax'], function () {
     Route::group(['prefix' => 'ajax'], function () {
         Route::get('/', 'AjaxFontEndController@index');
         Route::get('/update-cart/{id}','AjaxFontEndController@update_cart');
+        Route::get('/delete-cart/{id}','AjaxFontEndController@delete_cart');
         Route::group(['prefix' => 'comment'], function () {
             Route::get('add', 'AjaxFontEndController@addComment')->name('addComment');
             Route::get('addreply', 'AjaxFontEndController@addReplyComment')->name('addReplyComment');

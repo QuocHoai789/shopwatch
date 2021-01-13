@@ -18,7 +18,6 @@
 	<h3 style="text-align: center; font-weight: bold"><i style="font-size:24px" class="fa">&#xf006;</i> HÃY LIÊN LẠC VỚI CHÚNG TÔI ?</h3>
 	<form name="" action="{{route('post-contact')}}" method="post">
 		@csrf
-		
 			<i class="fa fa-user" aria-hidden="true"></i>
 			<label >Họ và tên</label >
 			<input type="text" name="name" class="field form-control" placeholder="Nhập họ và tên" required="required" @if(Auth::check()) value="{{Auth::user()->name}}" @endif>
@@ -28,7 +27,6 @@
 			<i class="fa fa-phone" aria-hidden="true"></i>
 			<label>Số điện thoại</label>
 			<input type="text" name="phone" class="field form-control" placeholder="Nhập số điện thoại" required="required" @if(Auth::check()) value="{{Auth::user()->phone_number}}" @endif>
-			
 			<i class="fa fa-commenting-o" aria-hidden="true"></i>
 			<label>Lời nhắn</label>
 			<textarea class="field form-control mes" name="message" placeholder="Lời nhắn" required="required" cols="20" rows="5"></textarea>
@@ -37,7 +35,6 @@
 			</div>		
 					
 	</form>
-				
 </div>
 </div>
 @endsection

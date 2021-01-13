@@ -16,8 +16,10 @@ class SeachController extends Controller
     }
     public function getProducts(Request $request)
     {
+        dd($request->key);
         if (strpos($request->key, '#') !== false) {
             $key = substr($request->key, 1);
+            
             $data['products'] = Products::where('id', $key)->paginate(10);
         } else {
             $data['products'] = Products::where('id', $request->key)->orWhere('name', 'like', '%' . $request->key . '%')->paginate(10);
