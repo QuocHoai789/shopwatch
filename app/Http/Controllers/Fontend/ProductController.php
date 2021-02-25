@@ -652,11 +652,13 @@ class ProductController extends Controller
         }
         return view('fontend.page.list-product')->with('product', $product)->with('i', 2);
     }
+
     public function all_female_product_brand(Request $request, $id)
     {
         $product = Products::join('brands', 'products.brands_id', '=', 'brands.id')->join('image_product', 'products.id', '=', 'image_product.products_id')->join('info_product', 'products.id', '=', 'info_product.products_id')->where('products.brands_id', $id)->whereIn('info_product.gender', [0, 10])->where('image_product.level', 1)->select('products.*', 'image_product.image');
 
         $tempt = 0;
+        dd($request->all());
         if ($request->has('sort')) {
             $tempt = 1;
             $sort = $request->sort;

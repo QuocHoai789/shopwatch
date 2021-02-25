@@ -14,7 +14,7 @@ class SeachFontEndController extends Controller
     {
         $key = $request->seach;
         $data['key'] = $key;
-        $products = Brands::join('products',function($product){
+        $products = Brands::join('products', function ($product) {
             $product->on('brands.id', 'products.brands_id')->where('products.status', 1);
         })->join('info_product', 'info_product.products_id', '=', 'products.id')->join('image_product', function ($image) {
             $image->on('products.id', '=', 'image_product.products_id')->where('level', 1);

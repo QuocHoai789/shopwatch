@@ -10,7 +10,7 @@ class Products extends Model
     // public $timestamps = false;
     public function brands()
     {
-        return $this->belongsTo('App\Models\Brands', 'id', 'brands_id');
+        return $this->belongsTo('App\Models\Brands', 'brands_id');
     }
     public function imageProduct()
     {

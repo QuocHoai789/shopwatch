@@ -196,7 +196,7 @@ class BrandController extends Controller
 		}
 		if ($request->has('sort') && $request->has('pri') && $request->has('gender')) {
 			$tempt = 7;
-			$sort = $request->sort;
+			$sort  = $request->sort;
 			switch ($sort) {
 
 				case 'id':
