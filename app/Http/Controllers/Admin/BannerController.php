@@ -10,7 +10,7 @@ use App\Http\Requests\BannerRequest;
 session_start();
 class BannerController extends Controller
 {
-    //
+    //comments
     function add_banner()
     {
         return view('backend.page.banner.add-banner');
