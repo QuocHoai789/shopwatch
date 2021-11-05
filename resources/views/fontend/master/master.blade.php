@@ -34,14 +34,9 @@
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link href="css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/morris.css" type="text/css" />
-
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <script type="text/javascript" src="js/megamenu.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".megamenu").megamenu();
-        });
-
-    </script>
+    
     <!--start slider -->
     <link rel="stylesheet" href="css/fwslider.css" media="all">
     <script src="js/jquery-ui.min.js"></script>
@@ -51,60 +46,11 @@
     <script src="js/jquery.easydropdown.js"></script>
     <!-- start details -->
     <script src="js/slides.min.jquery.js"></script>
-    <script>
-        $(function () {
-            $('#products').slides({
-                preload: true,
-                preloadImage: 'img/loading.gif',
-                effect: 'slide, fade',
-                crossfade: true,
-                slideSpeed: 350,
-                fadeSpeed: 500,
-                generateNextPrev: true,
-                generatePagination: false
-            });
-        });
-
-    </script>
+    
     <link rel="stylesheet" href="css/etalage.css">
     <script src="js/jquery.etalage.min.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-
-            $('#etalage').etalage({
-                thumb_image_width: 360,
-                thumb_image_height: 360,
-                source_image_width: 900,
-                source_image_height: 900,
-                show_hint: true,
-                click_callback: function (image_anchor, instance_id) {
-                    alert('Callback example:\nYou clicked on an image with the anchor: "' +
-                        image_anchor +
-                        '"\n(in Etalage instance: "' + instance_id + '")');
-                }
-            });
-
-        });
-        //scroll in home
-        $(document).ready(function () {
-            $("#scroll-top").hide();
-            $(window).scroll(function () {
-                //$("#scroll-top").show();
-                var scrollTop = $(window).scrollTop();
-                if (scrollTop > 0) {
-                    $("#scroll-top").show();
-                } else {
-                    $("#scroll-top").hide();
-                }
-            })
-            $("#scroll-top").click(function () {
-                // $(window).animate({scrollTop:0}, '800');
-                $(window).scrollTop(0);
-            });
-        });
-
-    </script>
-    <script src="js/comment.js"></script>
+    
+   
     <style>
         .tag-list {
             position: relative;
@@ -157,5 +103,69 @@
 @if(session('notification'))
     @include('notify.note')
 @endif
+<script src="js/comment.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".megamenu").megamenu();
+    });
 
+</script>
+<script>
+    $(function () {
+        $('#products').slides({
+            preload: true,
+            preloadImage: 'img/loading.gif',
+            effect: 'slide, fade',
+            crossfade: true,
+            slideSpeed: 350,
+            fadeSpeed: 500,
+            generateNextPrev: true,
+            generatePagination: false
+        });
+    });
+
+</script>
+<script>
+    jQuery(document).ready(function ($) {
+
+        $('#etalage').etalage({
+            thumb_image_width: 360,
+            thumb_image_height: 360,
+            source_image_width: 900,
+            source_image_height: 900,
+            show_hint: true,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' +
+                    image_anchor +
+                    '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+
+    });
+    //scroll in home
+    $(document).ready(function () {
+        $("#scroll-top").hide();
+        $(window).scroll(function () {
+            //$("#scroll-top").show();
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 0) {
+                $("#scroll-top").show();
+            } else {
+                $("#scroll-top").hide();
+            }
+        })
+        $("#scroll-top").click(function () {
+            // $(window).animate({scrollTop:0}, '800');
+            $(window).scrollTop(0);
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".locgia").on('click', function(){
+            
+        })
+    })
+</script>
 </html>

@@ -118,10 +118,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('delete/{id}','NewsController@delete')->name('delete');
 
     });
+    //contact
     Route::get('all-contact','ContactController@all_contact')->name('all-contact');
     Route::get('/delete-con-{id}','ContactController@delete_contact')->name('delete-contact');
     Route::get('reply-contact/{id}','ContactController@reply_contact')->name('reply-contact');
     Route::post('postReply/{id}','ContactController@post_reply_contact')->name('postReply');
+    //end contact
+    //hướng dẫn
+    Route::get('list-huongdan', 'HuongdanController@index')->name('list-huongdan');
+    Route::get('add-huongdan', 'HuongDanController@addHuongDan')->name('add-huong-dan');
+    Route::post('add-huongdan', 'HuongDanController@post_addHuongDan')->name('add-huong-dan');
+    Route::get('edit-huongdan/{id}', 'HuongdanController@edit')->name('edit-huongdan');
+    Route::post('edit-huongdan/{id}', 'HuongdanController@post_edit')->name('edit-huongdan');
+    Route::get('delete-huongdan/{id}', 'HuongdanController@delete')->name('delete-huongdan');
+    //end hướng dẫn
     //Seach
     Route::group(['prefix' => 'seach'], function () {
         Route::get('bill','SeachController@getBill')->name('seachBill');
@@ -129,6 +139,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 });
 
+
+
+// End route backend
 //Route fontend
 Route::get('test', function () {
     return view('fontend.master.master');

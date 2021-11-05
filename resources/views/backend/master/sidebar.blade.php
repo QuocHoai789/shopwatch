@@ -90,6 +90,16 @@
 
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="">
+                     <i class="fa fa-bullhorn"></i>
+                        <span>Quản lý hướng dẫn</span>
+                        </a>
+                    <ul class="sub">
+                        <li><a href="{{route('list-huongdan')}}">Danh sách hướng dẫn</a></li>
+
+                    </ul>
+                </li>
                 <li>
                     <a href=" {{ route('adminlogout') }} ">
                         <i class="fa fa-power-off"></i>

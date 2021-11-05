@@ -73,9 +73,12 @@
                     <h4>Giá tiền</h4>
                     <div class="row row1 scroll-pane">
                         <div class="col col-4">
+                           
+                            
                             <label class="checkbox"><i></i><a class="{{Request::get('price')==1?'active':''}}" href="{{request()->fullUrlWithQuery(['price'=>1])}}">Dưới 5,000,000</a></label>
                             <label class="checkbox"></i><a class="{{Request::get('price')==2?'active':''}}" href="{{request()->fullUrlWithQuery(['price'=>2])}}">Từ 5,000,000 đến 10,000,000</a></label>
                             <label class="checkbox"><i></i><a class="{{Request::get('price')==3?'active':''}}" href="{{request()->fullUrlWithQuery(['price'=>3])}}">Trên 10,000,000</a></label>
+                        
                         </div>
                     </div>
                 </section>
@@ -83,9 +86,26 @@
                     <h4>Thương hiệu</h4>
                     <div class="row row1 scroll-pane">
                         <div class="col col-4">
+                           
+                            <form id="form_price" name="form-price" action="{{ url()->current()}}" method="get">
                             @foreach($brands as $brand)
-                            <label class="checkbox"><a class="{{Request::get('brand')==$brand->id?'active':''}}" href="{{request()->fullUrlWithQuery(['brand'=>$brand->id])}}"><i></i>{{$brand->name}}</a></label>
+                            @php
+                            $checked = array();
+                            if (isset($_GET['brand'])){
+                                
+                                        $checked = $_GET['brand'];
+                            }
+                           
+                        @endphp
+                        
+                        
+                                <input type="checkbox" class="locth{{Request::get('brand')==$brand->id?'active':''}}" id="th{{$brand->id}}" name="brand[]" data-th="{{$brand->id}}" value="{{$brand->id}}" @if(in_array($brand->id, $checked)) checked @endif >
+                                    <label for="brand">{{$brand->name}}</label><br>
+                                
+                            {{-- <label class="checkbox"><a class="{{Request::get('brand')==$brand->id?'active':''}}" href="{{request()->fullUrlWithQuery(['brand'=>$brand->id])}}"><i></i>{{$brand->name}}</a></label> --}}
                             @endforeach
+                            <input type="submit" name="" id="">
+                        </form>
                         </div>
                     </div>
                 </section>

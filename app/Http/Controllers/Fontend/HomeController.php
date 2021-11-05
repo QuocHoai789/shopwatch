@@ -17,6 +17,7 @@ class HomeController extends Controller
 
 	public function index()
 	{
+		//hello();
 		$highlight_product 	= Products::where('status', 1)
 			->where('ordernum', 1)
 			->limit(12)

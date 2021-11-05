@@ -520,13 +520,13 @@ body {
 
 .header-bottom-left {
     float: left;
-    width: 64.5%;
+    width: 70%;
     margin-top: 10px;
 }
 
 .header-bottom-right {
     float: right;
-    width: 30.5%;
+    width: 29%;
     margin-top: 10px;
 }
 
@@ -2997,9 +2997,13 @@ ul.delivery-list li a:hover {
 /*--responsive design--*/
 @media (max-width:1366px) {
     .wrap {
-        width: 90%;
+        width: 1250px;
+        margin: auto;
     }
-
+    .main-head{
+        display: flex;
+        justify-content: space-between;
+    }
     #products .pagination li a {
         width: 96px;
     }
@@ -4530,6 +4534,10 @@ ul.delivery-list li a:hover {
     float: left;
     /*background-color: pink;*/
 }
+.main3121img img{
+    transition: all 0.6s;
+}
+.main3121img:hover img{transform: scale(1.2);}
 .main3121nd{
     /*background-color: red;*/
     width: 228px;

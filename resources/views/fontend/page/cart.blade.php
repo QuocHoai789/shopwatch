@@ -48,8 +48,7 @@
                                     {{-- sign in user --}}
                                     @foreach ($carts_user as $cart)
                                         <tr>
-                                            <td><img src="{{ asset($cart->products->avatar->image) }}" alt=""
-                                                    class="cart_img"></td>
+                                            <td><img src="{{ asset($cart->products->avatar()->image) }}" alt="" class="cart_img"></td>
                                             <td>{{ $cart->products->name }}</td>
                                             <td class="price">
                                                 {{ number_format($cart->products->sellprice) }}

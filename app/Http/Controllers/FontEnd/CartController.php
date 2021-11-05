@@ -45,7 +45,7 @@ class CartController extends Controller
     }
     public function add(Request $request)
     {
-
+        
         $id = $request->products_id;
         if (Auth::check()) {
             //sign in user
@@ -66,7 +66,7 @@ class CartController extends Controller
         } else {
 
 
-
+            
             $product = Products::find($id);
 
             $cart = session()->get('cart');
